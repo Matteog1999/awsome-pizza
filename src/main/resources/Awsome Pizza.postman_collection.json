@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "d1d97a17-cc7e-4a1b-8e76-c3100c535253",
+		"name": "Awsome Pizza",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45604140",
+		"_collection_link": "https://teo-605122.postman.co/workspace/Teo's-Workspace~e958d287-856c-424d-8667-ce467081d8d0/collection/45604140-d1d97a17-cc7e-4a1b-8e76-c3100c535253?action=share&source=collection_link&creator=45604140"
+	},
+	"item": [
+		{
+			"name": "createOrder",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\":\"via test\",\r\n    \"phoneNumber\":\"32131231\",\r\n    \"pizzaType\":\"margherita\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customerController/createOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customerController",
+						"createOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orderStatus",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customerController/orderStatus?orderId=733a7868-1609-43b4-ace6-e5b4265c672a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customerController",
+						"orderStatus"
+					],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "733a7868-1609-43b4-ace6-e5b4265c672a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allOrders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/chefController/allOrders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chefController",
+						"allOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateStatus",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/chefController/updateStatus?orderId=eea871dc-d94d-40d3-bce8-727371de992a&status=processing",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"chefController",
+						"updateStatus"
+					],
+					"query": [
+						{
+							"key": "orderId",
+							"value": "eea871dc-d94d-40d3-bce8-727371de992a"
+						},
+						{
+							"key": "status",
+							"value": "processing"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

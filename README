@@ -1,0 +1,8 @@
+Nella cartella resources è possibile trovare lacollection Postman con le chiamate presenti nei Controller.
+
+Per connettersi al db di h2o:
+
+url: http://localhost:8080/h2-console/login.jsp?jsessionid=260d72e2cd9cebb6bc23d320b7f04692
+cambiare JDBC URL con: jdbc:h2:mem:testdb
+user name: awesome
+password: pizza

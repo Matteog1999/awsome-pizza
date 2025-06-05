@@ -1,9 +1,14 @@
 package com.example.awesomepizza.controller;
 
+import com.example.awesomepizza.exception.OrderNotFoundException;
 import com.example.awesomepizza.model.dto.CreateOrderDto;
-import com.example.awesomepizza.model.response.CreateOrderResponse;
 import com.example.awesomepizza.service.IAwesomePizzaService;
+import jakarta.validation.Valid;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("customerController")
@@ -11,20 +16,21 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     @Autowired
-    IAwesomePizzaService AwesomePizzaService;
+    private IAwesomePizzaService AwesomePizzaService;
 
     @PostMapping("/createOrder")
-    public CreateOrderResponse createOrder(
-            @RequestBody CreateOrderDto createOrderDto
-    ) {
-        return AwesomePizzaService.createOrder(createOrderDto);
+    public ResponseEntity<?> createOrder(
+            @RequestBody @Valid CreateOrderDto createOrderDto
+    ) throws BadRequestException {
+
+        return new ResponseEntity<>(AwesomePizzaService.createOrder(createOrderDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/orderStatus")
-    public String orderStatus(
+    public ResponseEntity<?> orderStatus(
             @RequestParam(name = "orderId") String orderId
-    ) {
-        return AwesomePizzaService.orderStatus(orderId);
+    ) throws BadRequestException, OrderNotFoundException {
+        return new ResponseEntity<>(AwesomePizzaService.orderStatus(orderId), HttpStatus.OK);
     }
 
 }
