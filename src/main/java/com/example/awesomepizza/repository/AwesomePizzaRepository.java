@@ -8,12 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AwesomePizzaRepository extends JpaRepository<AwesomePizzaEntity, Long> {
 
     @Query("SELECT ap.orderStatus FROM AwesomePizzaEntity ap WHERE ap.orderId = :orderId")
-    String findByOrderId(@Param("orderId") String orderId);
+    Optional<String> findByOrderId(@Param("orderId") String orderId);
 
     List<AwesomePizzaEntity> findByOrderByOrderDateAsc();
 
